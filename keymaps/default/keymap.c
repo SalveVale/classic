@@ -6,6 +6,12 @@ enum custom_keycodes {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  // debugging
+  //   // If console is enabled, it will print the matrix position and status of each key pressed
+  // #ifdef CONSOLE_ENABLE
+  //     uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+  // #endif 
+
   switch (keycode) {
   case LABEL:
     if (record->event.pressed) {
@@ -52,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MN] = LAYOUT_split_5x7( // MAIN
         KC_ESC,  KC_1,    KC_2,       KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
         KC_TAB,  KC_Q,    KC_W,       KC_F,    KC_P,    KC_B,                           KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT, KC_EQL,
-        OSL(NV), KC_A,    KC_S,       KC_R,    KC_T,    KC_G,   KC_SPC,        KC_SPC,  KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_SCLN,
+        OSL(NV), KC_A,    KC_S,       KC_R,    KC_T,    KC_G,   QK_BOOT,        KC_SPC,  KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_SCLN,
         KC_LSFT, KC_Z,    KC_X,       KC_C,    KC_D,    KC_V,   KC_SPC,        KC_SPC,  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_UP,   KC_SLSH,
         KC_LCTL, KC_GRV,  LGUI(KC_S), KC_LGUI, KC_LALT, KC_SPC, OSL(FN),       OSL(NV), SC_SENT, KC_BSPC, KC_DEL,  KC_LEFT, KC_DOWN, KC_RIGHT
     ),
